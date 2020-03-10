@@ -1,7 +1,7 @@
 {
   "name": "maya-ui",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.1",
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name maya-ui src/main.js",
@@ -43,5 +43,24 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "description": "## Project setup ``` npm install ```",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iann00/maya-ui.git"
+  },
+  "keywords": [
+    "vuejs",
+    "component",
+    "ui",
+    "js",
+    "css",
+    "web"
+  ],
+  "author": "Navi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iann00/maya-ui/issues"
+  },
+  "homepage": "https://github.com/iann00/maya-ui#readme"
 }
