@@ -29,6 +29,7 @@ export default {
 			validator(val) {
 				return [
 					'regular',
+					'accent',
 					'light'
 				].indexOf(val) !== -1
 			}

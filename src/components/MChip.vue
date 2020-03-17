@@ -17,6 +17,7 @@ export default {
 			type: String,
 			validator(val) {
 				return [
+					'accent',
 					'success',
 					'error'
 				].indexOf(val) !== -1

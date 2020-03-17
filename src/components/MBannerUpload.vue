@@ -19,7 +19,7 @@
 import MFloatingButton from './MFloatingButton'
 
 	export default {
-		name: 'm-avatar-upload',
+		name: 'm-banner-upload',
 		props: {
 			img: String,
 			iconSize: {

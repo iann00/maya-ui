@@ -4,6 +4,7 @@
 			`m-button`,
 			`m-button-state-${state}`, 
 			`m-button-shape-${shape}`,
+			`m-elevation-${elevation}`
 		]"
 		@click="$emit('m-click')"
 		:disabled="loading">
@@ -36,11 +37,24 @@
 				default: 'regular',
 				validator: function (value) {
 					return [
-						'regular', 
+						'regular',
+						'accent',
 						'success', 
-						'danger',
-						'light'
+						'error',
+						'outline'
 						].indexOf(value) !== -1
+				}
+			},
+			elevation: {
+				type: String,
+				default: 'none',
+				validator(value) {
+					return [
+						'none',
+						'light',
+						'medium',
+						'high'
+					].indexOf(value) !== -1
 				}
 			},
 			loading: Boolean,
