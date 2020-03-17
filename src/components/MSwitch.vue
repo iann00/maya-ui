@@ -2,11 +2,11 @@
 	<div>
    <span>
     <label class="m-switch">
-    <input type="checkbox" v-bind:value="value"
-      v-on:input="$emit('input', $event.target.value)"><div class="slider round"></div>
+    <input type="checkbox" :checked="value"
+      @input="$emit('input', $event.target.checked)"><div class="slider round"></div>
     </label>
    </span>
-   <span v-text="label"></span> 
+   <span class="m-switch-label" v-text="label"></span> 
   </div>
 </template>
 <script>
