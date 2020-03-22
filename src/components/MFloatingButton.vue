@@ -4,7 +4,9 @@
 		`m-floating-button-state-${state}`,
 		`m-floating-button-size-${size}`,
 		`m-elevation-${elevation}`
-		]" @click="$emit('m-click')">
+		]" 
+		:style="{ top: top, bottom: bottom, left: left, right: right}"
+		@click="$emit('m-click')">
 		<i :class="[icon]"></i>
 	</button>
 </template>
@@ -46,6 +48,10 @@ export default {
 				].indexOf(val) !== -1
 			}
 		},
+		top: String,
+		left: String,
+		bottom: String,
+		right: String,
 		icon: String
 	},
 }

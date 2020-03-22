@@ -1,28 +1,26 @@
 <template>
-	<div class="m-dialog" v-if="open">
-		<div class="m-dialog-content">
-			<div class="m-dialog-header">
-				<span class="m-dialog-header-col">
-					<m-title :text="title" v-if="title"></m-title>
-				</span>
-				<span class="m-dialog-header-col right">
-					<m-floating-button 
-						@m-click="closeDialog" 
-						size="tiny" 
-						state="light"
-						icon="bx bx-x">
-					</m-floating-button>
-				</span>
-			</div>
-			<div class="m-dialog-slot">
-				<slot></slot>
+	<perfect-scrollbar>
+		<div class="m-dialog" v-if="open">
+			<div class="m-dialog-content">
+				<div class="m-dialog-header">
+					<span class="m-dialog-header-col">
+						<m-title :text="title" v-if="title"></m-title>
+					</span>
+					<span class="m-dialog-header-col right">
+						<m-close-button @m-click="closeDialog"></m-close-button>
+					</span>
+				</div>
+				<div class="m-dialog-slot">
+					<slot></slot>
+				</div>
 			</div>
 		</div>
-	</div>
+	</perfect-scrollbar>
 </template>
 <script>
-	import MFloatingButton from './MFloatingButton'
+	import { PerfectScrollbar } from 'vue2-perfect-scrollbar'
 	import MTitle from './MTitle'
+	import MCloseButton from './MCloseButton'
 
 	export default {
 		name: 'm-dialog',
@@ -37,8 +35,9 @@
 			},
 		},
 		components: {
-      MFloatingButton,
-      MTitle
+      MTitle,
+      PerfectScrollbar,
+      MCloseButton
     },
     data() {
 			return {
@@ -50,10 +49,11 @@
 			 * Close dialog and emit the event to parent component
 			 *
 			 */
-			closeDialog: function () {
+			closeDialog () {
 				this.$emit('closeDialog');
 				this.open = false;
 			}
 		},
 	}
 </script>
+<style src="vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css"/>

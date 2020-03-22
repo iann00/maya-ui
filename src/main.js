@@ -18,6 +18,9 @@ import MSubtitle from './components/MSubtitle.vue'
 import MSwitch from './components/MSwitch.vue'
 import MToolbar from './components/MToolbar.vue'
 import MUpload from './components/MUpload.vue'
+import MSelect from './components/MSelect.vue'
+import MHeader from './components/MHeader.vue'
+import MCloseButton from './components/MCloseButton.vue'
 
 const components = {
 	MAvatar,
@@ -39,7 +42,10 @@ const components = {
 	MSubtitle,
 	MSwitch,
 	MToolbar,
-	MUpload
+	MUpload,
+	MSelect,
+	MHeader,
+	MCloseButton
 }
 
 const Maya = {

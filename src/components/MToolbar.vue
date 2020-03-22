@@ -1,7 +1,7 @@
 <template>
 	<div class="m-toolbar">
 		<span class="m-toolbar-col">
-			<span style="margin-left: -8px;">
+			<span style="margin-left: -2px;">
 				<m-avatar
 					class="hidden-in-ms"
 					:img="logo"
@@ -29,34 +29,35 @@
 					<i class='bx bx-bell m-toolbar-notification-icon'></i>
 				</a>
 				<div class="m-dropdown m-elevation-light" v-show="isOpenDropdown">	
-					<vue-custom-scrollbar class="m-dropdown-options"
-						@ps-y-reach-end="notificationsReachEnd">
+					<perfect-scrollbar>
 						<div class="m-dropdown-options">
-						<div class="m-dropdown-options-empty center" v-if="notifications == []">
-							Nada aqui...
+							<div class="m-dropdown-options">
+							<div class="m-dropdown-options-empty center" v-if="notifications == []">
+								Nada aqui...
+							</div>
+							<div v-if="notifications">
+								<m-notification 
+									v-for="(notification, i) in notifications"
+									:key="i"
+									:data="notification">
+                </m-notification>
+							</div>
 						</div>
-						<div v-if="notifications">
-							<m-notification 
-								v-for="(notification, i) in notifications"
-								:key="i"
-								:data="notification">
-              </m-notification>
 						</div>
-					</div>
-				</vue-custom-scrollbar>
+					</perfect-scrollbar>
 			</div>
 			</span>
 			<span>
 				<m-avatar
 					:img="user"
 					size="tiny"
-					@m-click="avatarClick"></m-avatar>
+					@m-click="userClick"></m-avatar>
 			</span>
 		</span>
 	</div>
 </template>
 <script>
-	import vueCustomScrollbar from 'vue-custom-scrollbar'
+	import { PerfectScrollbar } from 'vue2-perfect-scrollbar'
 	import MAvatar from './MAvatar.vue'
 	import MInput from './MInput.vue'
 	import MNotification from './MNotification'
@@ -78,19 +79,20 @@
 			},
 			notifications: {
 				type: Array,
-				required: true
+				default: function () {
+					return []
+				}
 			},
 			showIndicator: {
 				type: Boolean,
 				default: false,
-				required: true
 			}
 		},
 		components: {
 			MAvatar,
 			MInput,
 			MNotification,
-			vueCustomScrollbar
+			PerfectScrollbar
 		},
 		data() {
 			return {
@@ -117,6 +119,7 @@
 			/**
 			 * Emit search input event
 			 *
+			 * @param {object} e
 			 */
 			searchInput(e) {
 				this.$emit('search-input', e.target.value)
@@ -144,3 +147,4 @@
 		}
 	}
 </script>
+<style src="vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css"/>

@@ -1,11 +1,13 @@
 <template>
 	<button
+		ref="mbutton"
 		:class="[
 			`m-button`,
 			`m-button-state-${state}`, 
 			`m-button-shape-${shape}`,
 			`m-elevation-${elevation}`
 		]"
+		
 		@click="$emit('m-click')"
 		:disabled="loading">
 		<span class="m-button-label" v-show="!loading">

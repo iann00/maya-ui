@@ -1,6 +1,6 @@
 {
   "name": "maya-ui",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -16,7 +16,8 @@
     "core-js": "^3.6.4",
     "minimist": "^1.2.2",
     "vue": "^2.6.11",
-    "vue-custom-scrollbar": "^1.1.0"
+    "vue-custom-scrollbar": "^1.1.0",
+    "vue2-perfect-scrollbar": "^1.4.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.2.0",
