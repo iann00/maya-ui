@@ -15,7 +15,7 @@
 	export default {
 		name: 'm-switch',
     props: {
-      value: String,
+      value: Boolean,
       label: {
         type: String,
         default: null
@@ -27,7 +27,7 @@
     },
     data() {
       return {
-        val: false
+        val: this.value
       }
     },
     watch: {
