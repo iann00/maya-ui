@@ -13,6 +13,9 @@
 			class="hide"
 			accept="image/*"
 			@change="handleFile">
+		<div class="m-banner-upload-label" v-if="infos.fileName">
+			{{ infos.fileName }} &bull; <b>{{ infos.fileSize}}</b>
+		</div>	
 	</div>
 </template>
 <script>
@@ -39,7 +42,11 @@ import MFloatingButton from './MFloatingButton'
 		},
 		data() {
 			return {
-				image: null
+				image: null,
+				infos: {
+					fileName: null,
+					fileSize: null
+				}
 			}
 		},
 		created() {
@@ -49,18 +56,17 @@ import MFloatingButton from './MFloatingButton'
 		methods: {
 			/**
 			 * Perform click in input file hidden
-			 *
-			 * @param {object} event
 			 */
-			performClick: function () {
+			performClick() {
 				this.$refs.uploadInput.click();
 			},
+
 			/**
 			 * Emit to parent component about file
 			 *
 			 * @param {object} event
 			 */
-			handleFile: function (event) {
+			handleFile(event) {
 				let file = event.target.files[0];
 				this.$emit('handleFile', file);
 
@@ -73,6 +79,22 @@ import MFloatingButton from './MFloatingButton'
 					that.image = reader.result;
 				}
 				reader.readAsDataURL(file);
+
+				this.infos.fileName = file.name
+				this.infos.fileSize = this.bytesToSize(file.size)
+			},
+
+			/**
+			 * Format bytes from file to formatted pattern
+			 *
+			 * @param {object} bytes
+			 **/
+			bytesToSize(bytes) {
+        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        if (bytes == 0) return '0 Byte';
+
+        const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+        return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
 			}
 		},
 	}

@@ -62,3 +62,6 @@ export default Maya
 if (typeof window != 'undefined' && window.Vue) {
 	window.Vue.use(Maya)
 }
+
+
+

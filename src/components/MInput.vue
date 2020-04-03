@@ -1,15 +1,23 @@
 <template>
 	<div>
+		<label class="m-input-label" :for="name" v-if="name">{{name}}</label>
 		<div :class="[
 			`m-input`,
 			`m-input-state-${state}`,
 			`m-input__${enable ? 'disabled' : 'none'}`
 		]"
 		:style="{ width: width + '%'}">
-			<input :value="value"
-				ref="mInput"
+			<input 
+				:type="type"
+				:value="value"
+				:name="name"
+				:step="step"
+				:min="min"
+				:max="max"
 				:placeholder="placeholder"
-				@input="$emit('input', $event.target.value)" :disabled="enable">
+				:disabled="enable"
+				ref="mInput"
+				@input="$emit('input', $event.target.value)">
 			<span class="m-input-state-icon m-input-state-icon__success" 
 				v-if="state == 'success'">
 				<i class="bx bxs-check-circle"></i>
@@ -42,6 +50,14 @@
 			value: null,
 			state: String,
 			enable: Boolean,
+			name: String,
+			step: Number,
+			min: Number,
+			max: Number,
+			type: {
+				type: String,
+				default: 'text'
+			},
 			width: {
 				type: Number,
 				default: 50

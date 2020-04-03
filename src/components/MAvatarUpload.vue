@@ -1,7 +1,7 @@
 <template>
 	<div class="m-avatar-upload center">
 		<span class="m-avatar-upload-image-wrapper text-center">
-			<m-avatar :img="image" size="large" class="m-preview-image"></m-avatar>
+			<m-avatar :img="img" size="large" class="m-preview-image"></m-avatar>
 			<m-floating-button
 				class="m-preview-circle-button"
 				:size="iconSize"
@@ -41,15 +41,6 @@ import MFloatingButton from './MFloatingButton'
 			MAvatar,
 			MFloatingButton
 		},
-		data() {
-			return {
-				image: null
-			}
-		},
-		created() {
-			// Set received image URL by prop to preview
-			this.image = this.img;
-		},
 		methods: {
 			/**
 			 * Perform click in input file hidden
@@ -59,6 +50,7 @@ import MFloatingButton from './MFloatingButton'
 			performClick: function () {
 				this.$refs.uploadInput.click();
 			},
+
 			/**
 			 * Emit to parent component about file
 			 *
