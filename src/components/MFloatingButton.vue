@@ -1,9 +1,11 @@
 <template>
-	<button :class="[
-		`m-floating-button`,
-		`m-floating-button-state-${state}`,
-		`m-floating-button-size-${size}`,
-		`m-elevation-${elevation}`
+	<button 
+		type="button" 
+		:class="[
+			`m-floating-button`,
+			`m-floating-button-state-${state}`,
+			`m-floating-button-size-${size}`,
+			`m-elevation-${elevation}`
 		]" 
 		:style="{ top: top, bottom: bottom, left: left, right: right}"
 		@click="$emit('m-click')">

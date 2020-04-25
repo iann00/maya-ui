@@ -2,10 +2,7 @@
 	<div class="m-toolbar">
 		<span class="m-toolbar-col">
 			<span style="margin-left: -2px;">
-				<m-avatar
-					class="hidden-in-ms"
-					:img="logo"
-					size="tiny"></m-avatar>
+				
 			</span>
 			<span class="m-toolbar-reponsive-icon" >
 				<a href="javascript:void(0)" @click="menuClick">
@@ -14,14 +11,13 @@
 				</a>
 			</span>
 		</span>
-		<span class="m-toolbar-col hidden-in-ms center">
-			<m-input type="text" 
-				state="flat"
-				:placeholder="searchPlaceholder"
-				:width="100"
-				@input.native="searchInput($event)"></m-input>
-		</span>
 		<span class="m-toolbar-col right">
+			<span>
+				<a href="javascript:void(0)" 
+					@click="switchDropdown">
+					<i class='bx bx-search m-toolbar-notification-icon'></i>
+				</a>
+			</span>
 			<span>
 				<span class="m-notification-indicator" v-show="showIndicator"></span>
 				<a href="javascript:void(0)" 
@@ -59,7 +55,6 @@
 <script>
 	import { PerfectScrollbar } from 'vue2-perfect-scrollbar'
 	import MAvatar from './MAvatar.vue'
-	import MInput from './MInput.vue'
 	import MNotification from './MNotification'
 
 	export default {
@@ -68,14 +63,6 @@
 			user: {
 				type: String,
 				default: ''
-			},
-			logo: {
-				type: String,
-				default: ''
-			},
-			searchPlaceholder: {
-				type: String,
-				default: 'Search'
 			},
 			notifications: {
 				type: Array,
@@ -90,7 +77,6 @@
 		},
 		components: {
 			MAvatar,
-			MInput,
 			MNotification,
 			PerfectScrollbar
 		},
@@ -115,19 +101,9 @@
 			userClick() {
 				this.$emit('user-click')
 			},
-
-			/**
-			 * Emit search input event
-			 *
-			 * @param {object} e
-			 */
-			searchInput(e) {
-				this.$emit('search-input', e.target.value)
-			},
-
+			
 			/**
 			 * Emit notifications scroll end event
-			 *
 			 */
 			notificationsReachEnd() {
 				this.$emit('notifications-reach-end')
@@ -136,7 +112,6 @@
 			/**
 			 * Switch notifications visibility and 
 			 * emit open/close click event
-			 *
 			 */
 			switchDropdown() {
 				this.isOpenDropdown = !this.isOpenDropdown;

@@ -3,12 +3,12 @@
 		ref="mbutton"
 		:class="[
 			`m-button`,
-			`m-button-state-${state}`, 
-			`m-button-shape-${shape}`,
-			`m-elevation-${elevation}`
+			`m-button-size__${size}`,
+			`m-button-state__${state}`, 
+			`m-button-shape__${shape}`,
+			`m-elevation__${elevation}`
 		]"
-		
-		@click="$emit('m-click')"
+		@click="handleClick"
 		:disabled="loading">
 		<span class="m-button-label" v-show="!loading">
 			{{ label }}
@@ -34,10 +34,21 @@
 						].indexOf(value) !== -1
 				}
 			},
+			size: {
+				type: String,
+				default: 'regular',
+				validator(value) {
+					return [
+						'tiny',
+						'regular',
+						'large'
+					].indexOf(value) !== -1
+				}
+			},
 			state: {
 				type: String,
 				default: 'regular',
-				validator: function (value) {
+				validator(value) {
 					return [
 						'regular',
 						'accent',
@@ -62,5 +73,14 @@
 			loading: Boolean,
 			label: String
 		},
+		methods: {
+			/**
+			 * Handle click to custom component
+			 */
+			handleClick() {
+				this.$emit('m-click')
+				this.$emit('click')
+			}
+		}
 	}
 </script>
