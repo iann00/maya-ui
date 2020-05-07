@@ -1,7 +1,7 @@
 <template>
 	<div class="m-avatar-upload center">
 		<span class="m-avatar-upload-image-wrapper text-center">
-			<m-avatar :img="img" :size="size" class="m-preview-image"></m-avatar>
+			<m-avatar :img="image" :size="size" class="m-preview-image"></m-avatar>
 			<m-floating-button
 				:class="[`m-preview-circle-button`, `m-preview-circle-button-position__${size}`]"
 				:size="iconSize"
@@ -53,6 +53,14 @@ export default {
 		MAvatar,
 		MFloatingButton
 	},
+	created() {
+		this.image = this.img
+	},
+	data() {
+		return {
+			image: null
+		}
+	},
 	methods: {
 		/**
 		 * Perform click in input file hidden
@@ -78,7 +86,7 @@ export default {
 			let reader = new FileReader();
 				reader.onload = function () {
 					// Set the new image in preview
-					self.img = reader.result;
+					self.image = reader.result;
 				}
 				reader.readAsDataURL(file);
 			}

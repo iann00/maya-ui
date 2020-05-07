@@ -64,5 +64,18 @@ if (typeof window != 'undefined' && window.Vue) {
 }
 
 
+// import Vue from 'vue'
+// import App from './App.vue'
+
+// import MAvatarUpload from '@/components/MAvatarUpload'
+
+// import '../dist/style.scss'
+
+// Vue.component('m-avatar-upload', MAvatarUpload)
+
+// new Vue({
+//   render: h => h(App),
+// }).$mount('#app')
+
 
 
