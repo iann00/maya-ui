@@ -73,12 +73,12 @@ export default {
 			this.$emit('handleFile', file);
 
 			// Keep ref from context
-			const that = this;
+			const self = this;
 
 			let reader = new FileReader();
 				reader.onload = function () {
 					// Set the new image in preview
-					that.image = reader.result;
+					self.img = reader.result;
 				}
 				reader.readAsDataURL(file);
 			}
