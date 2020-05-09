@@ -67,11 +67,13 @@ if (typeof window != 'undefined' && window.Vue) {
 // import Vue from 'vue'
 // import App from './App.vue'
 
-// import MAvatarUpload from '@/components/MAvatarUpload'
+// import MToolbar from '@/components/MToolbar'
+// import MMenu from '@/components/MMenu'
 
 // import '../dist/style.scss'
 
-// Vue.component('m-avatar-upload', MAvatarUpload)
+// Vue.component('m-menu', MMenu)
+// Vue.component('m-toolbar', MToolbar)
 
 // new Vue({
 //   render: h => h(App),

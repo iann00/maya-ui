@@ -1,66 +1,33 @@
 <template>
 	<div class="m-toolbar">
-		<span class="m-toolbar-col">
-			<span style="margin-left: -2px;">
-				
-			</span>
-			<span class="m-toolbar-reponsive-icon" >
-				<a href="javascript:void(0)" @click="menuClick">
-					<i class='bx bx-menu 
-						m-toolbar-hamburger-icon'></i>
-				</a>
-			</span>
-		</span>
-		<span class="m-toolbar-col right">
-			<span>
-				<a href="javascript:void(0)" 
-					@click="switchDropdown">
-					<i class='bx bx-search m-toolbar-notification-icon'></i>
-				</a>
-			</span>
-			<span>
-				<span class="m-notification-indicator" v-show="showIndicator"></span>
-				<a href="javascript:void(0)" 
-					@click="switchDropdown">
-					<i class='bx bx-bell m-toolbar-notification-icon'></i>
-				</a>
-				<div class="m-dropdown m-elevation-light" v-show="isOpenDropdown">	
-					<perfect-scrollbar>
-						<div class="m-dropdown-options">
-							<div class="m-dropdown-options">
-							<div class="m-dropdown-options-empty center" v-if="notifications == []">
-								Nada aqui...
-							</div>
-							<div v-if="notifications">
-								<m-notification 
-									v-for="(notification, i) in notifications"
-									:key="i"
-									:data="notification">
-                </m-notification>
-							</div>
-						</div>
-						</div>
-					</perfect-scrollbar>
+		<div class="col">
+			<i class='bx bx-menu' @click="onMenuClick"></i>
+		</div>
+		<div class="col right">
+			<ul>
+				<li>
+					<a href="javascript:void(0)" @click="onSearchClick">
+						<i class="bx bx-search"></i>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" @click="onNotificationClick">
+						<i class="bx bxs-inbox"></i>
+					</a>
+				</li>
+			</ul>
+			<div class="m-toolbar-avatar"
+				@click="onAvatarClick"
+				:style="{ 'background-image': `url('${avatar}')` }">
 			</div>
-			</span>
-			<span>
-				<m-avatar
-					:img="user"
-					size="tiny"
-					@m-click="userClick"></m-avatar>
-			</span>
-		</span>
+		</div>
 	</div>
 </template>
 <script>
-	import { PerfectScrollbar } from 'vue2-perfect-scrollbar'
-	import MAvatar from './MAvatar.vue'
-	import MNotification from './MNotification'
-
 	export default {
 		name: 'm-toolbar',
 		props: {
-			user: {
+			avatar: {
 				type: String,
 				default: ''
 			},
@@ -75,11 +42,6 @@
 				default: false,
 			}
 		},
-		components: {
-			MAvatar,
-			MNotification,
-			PerfectScrollbar
-		},
 		data() {
 			return {
 				isOpenDropdown: false,
@@ -90,16 +52,29 @@
 			 * Emit menu click event
 			 *
 			 */
-			menuClick() {
-				this.$emit('menu-click')
+			onMenuClick() {
+				this.$emit('on-menu-click')
 			},
 
 			/**
 			 * Emit user click event
-			 *
 			 */
-			userClick() {
-				this.$emit('user-click')
+			onAvatarClick() {
+				this.$emit('on-avatar-click')
+			},
+
+			/**
+			 * Emit notification click event
+			 */
+			onNotificationClick() {
+				this.$emit('on-notification-click')
+			},
+
+			/**
+			 * Emit search click event
+			 */
+			onSearchClick() {
+				this.$emit('on-search-click')
 			},
 			
 			/**
